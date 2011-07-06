@@ -35,14 +35,17 @@
 
 (define-key my-keys-minor-mode-map (kbd "M-o")  'ido-find-file)
 (define-key my-keys-minor-mode-map (kbd "M-r")  'recentf-ido-find-file)
-
+ 
 (define-key my-keys-minor-mode-map (kbd "M-9")  (kbd "C-x o"))
-(define-key my-keys-minor-mode-map (kbd "M-1")  (kbd "C-x 1"))
+(define-key my-keys-minor-mode-map (kbd "M-1")  (kbd "C-x 1")) 
 (define-key my-keys-minor-mode-map (kbd "M-2")  (kbd "C-x 2 C-x o"))
 (define-key my-keys-minor-mode-map (kbd "M-3")  (kbd "C-x 3 C-x o"))
 (define-key my-keys-minor-mode-map (kbd "M-0")  (kbd "C-x 0"))
 
 (define-key my-keys-minor-mode-map (kbd "M-,")  (kbd "C-d"))
+(define-key my-keys-minor-mode-map (kbd "M-<RET>")  (kbd "C-e <RET>"))
+(define-key my-keys-minor-mode-map (kbd "M-;")  'whole-line-or-region-comment-dwim)
+
 
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
