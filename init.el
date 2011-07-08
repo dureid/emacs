@@ -9,3 +9,9 @@
 
 ;; scheme
 (setq scheme-program-name "mit-scheme")
+
+(require  'delete-twecl)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
+
