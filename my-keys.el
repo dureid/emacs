@@ -1,50 +1,61 @@
 (defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 
-(define-key my-keys-minor-mode-map (kbd "M-I")  'previous-logical-line)
-(define-key my-keys-minor-mode-map (kbd "M-K")  'next-logical-line)
-(define-key my-keys-minor-mode-map (kbd "M-J")  'backward-word)
-(define-key my-keys-minor-mode-map (kbd "M-L")  'forward-word)
+(defun dfk (new-key old-key)
+  (define-key my-keys-minor-mode-map (read-kbd-macro new-key)  (read-kbd-macro old-key))
+ )
 
-(define-key my-keys-minor-mode-map (kbd "M-i")  'previous-line)
-(define-key my-keys-minor-mode-map (kbd "M-k")  'next-line)
-(define-key my-keys-minor-mode-map (kbd "M-j")  'backward-char)
-(define-key my-keys-minor-mode-map (kbd "M-l")  'forward-char)
+(defun dff (new-key old-key)
+  (define-key my-keys-minor-mode-map (read-kbd-macro new-key)  old-key)
+ )
 
-(define-key my-keys-minor-mode-map (kbd "M-SPC") 'set-mark-command)
-(define-key my-keys-minor-mode-map (kbd "M-x")  (kbd "C-w"))
-(define-key my-keys-minor-mode-map (kbd "M-c")  (kbd "M-w"))
-(define-key my-keys-minor-mode-map (kbd "M-v")  (kbd "C-y"))
-(define-key my-keys-minor-mode-map (kbd "M-u")  'undo)
-(define-key my-keys-minor-mode-map (kbd "M-a")  'mark-whole-buffer)
+(dfk "M-I" "C-u 8 C-p")
+(dfk "M-K" "C-u 8 C-n")
+(dff "M-J" 'backward-word)
+(dff "M-L" 'forward-word)
 
-(define-key my-keys-minor-mode-map (kbd "M-h")  'scroll-down)
-(define-key my-keys-minor-mode-map (kbd "M-b")  'scroll-up)
-(define-key my-keys-minor-mode-map (kbd "M-H")  'beginning-of-buffer)
-(define-key my-keys-minor-mode-map (kbd "M-B")  'end-of-buffer)
+(dff "M-i" 'previous-line)
+(dff "M-k" 'next-line)
+(dff "M-j" 'backward-char)
+(dff "M-l" 'forward-char)
 
-(define-key my-keys-minor-mode-map (kbd "M-n")  (kbd "C-a"))
-(define-key my-keys-minor-mode-map (kbd "M-m")  (kbd "C-e"))
-(define-key my-keys-minor-mode-map (kbd "M-y")  'kill-buffer)
+(dff "M-SPC" 'set-mark-command)
+(dfk "M-x" "C-w")
+(dfk "M-c" "M-w")
+(dfk "M-v" "C-y")
+(dff "M-u" 'undo)
+(dff "M-a" 'mark-whole-buffer)
 
-(define-key my-keys-minor-mode-map (kbd "M-t")  'previous-buffer)
+(dff "M-h" 'scroll-down)
+(dff "M-b" 'scroll-up)
+(dff "M-H" 'beginning-of-buffer)
+(dff "M-B" 'end-of-buffer)
 
-(define-key my-keys-minor-mode-map (kbd "M-s")  'save-buffer)
-(define-key my-keys-minor-mode-map (kbd "M-e")  'execute-extended-command)
-(define-key my-keys-minor-mode-map (kbd "M-q")  'keyboard-quit) ; doesn't work for some reason
-(define-key my-keys-minor-mode-map (kbd "M-6 M-7")  'save-buffers-kill-terminal)
+(dfk "M-n" "C-a")
+(dfk "M-m" "C-e")
+(dff "M-y" 'kill-buffer)
 
-(define-key my-keys-minor-mode-map (kbd "M-o")  'ido-find-file)
-(define-key my-keys-minor-mode-map (kbd "M-r")  'recentf-ido-find-file)
+(dff "M-t" 'bs-cycle-previous)
+
+(dff "M-s" 'save-buffer)
+(dff "M-4" 'execute-extended-command)
+(dff "M-7" 'keyboard-quit) ; doesn't work for some reason
+(dff "M-6 M-7" 'save-buffers-kill-terminal)
+
+(dff "M-o" 'ido-find-file)
+(dff "M-r" 'recentf-ido-find-file)
  
-(define-key my-keys-minor-mode-map (kbd "M-9")  (kbd "C-x o"))
-(define-key my-keys-minor-mode-map (kbd "M-1")  (kbd "C-x 1")) 
-(define-key my-keys-minor-mode-map (kbd "M-2")  (kbd "C-x 2 C-x o"))
-(define-key my-keys-minor-mode-map (kbd "M-3")  (kbd "C-x 3 C-x o"))
-(define-key my-keys-minor-mode-map (kbd "M-0")  (kbd "C-x 0"))
+(dfk "M-9" "C-x o")
+(dfk "M-1" "C-x 1") 
+(dfk "M-2" "C-x 2 C-x o")
+(dfk "M-3" "C-x 3 C-x o")
+(dfk "M-0" "C-x 0")
 
-(define-key my-keys-minor-mode-map (kbd "M-,")  (kbd "C-d"))
-(define-key my-keys-minor-mode-map (kbd "M-<RET>")  (kbd "C-e <RET>"))
-(define-key my-keys-minor-mode-map (kbd "M-;")  'whole-line-or-region-comment-dwim)
+(dfk "M-," "C-d")
+(dfk "M-<RET>" "C-e <RET>")
+(dff "M-;"  'whole-line-or-region-comment-dwim)
+
+(dff "M-f" 'isearch-forward-regexp)
+(dff "M-F" 'query-replace)
 
 
 (define-minor-mode my-keys-minor-mode
