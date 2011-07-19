@@ -1,8 +1,3 @@
-;; my-keys
-(require 'my-keys)
-(my-keys-minor-mode 1)
-
-
 ;; WLR mode
 (require 'whole-line-or-region)
 (whole-line-or-region-mode 1)
@@ -13,5 +8,8 @@
 (require  'delete-twecl)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; my-keys
+(require 'my-keys)
+(my-keys-minor-mode 1)
 
 
