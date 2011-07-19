@@ -7,11 +7,11 @@
 (defun dff (new-key old-key)
   (define-key my-keys-minor-mode-map (read-kbd-macro new-key)  old-key)
  )
-
-(dfk "M-I" "C-u 8 C-p")
-(dfk "M-K" "C-u 8 C-n")
-(dff "M-J" 'backward-word)
-(dff "M-L" 'forward-word)
+;; TODO: join line
+(dfk "M-8" "C-u 8 C-p")
+(dfk "M-u" "C-u 8 C-n")
+(dff "M-*" 'beginning-of-buffer)
+(dff "M-U" 'end-of-buffer)
 
 (dff "M-i" 'previous-line)
 (dff "M-k" 'next-line)
@@ -22,33 +22,29 @@
 (dfk "M-x" "C-w")
 (dfk "M-c" "M-w")
 (dfk "M-v" "C-y")
-(dff "M-u" 'undo)
+(dff "M-\\" 'undo)
 (dff "M-a" 'mark-whole-buffer)
 
-(dff "M-h" 'scroll-down)
-(dff "M-b" 'scroll-up)
-(dff "M-H" 'beginning-of-buffer)
-(dff "M-B" 'end-of-buffer)
 
-(dfk "M-n" "C-a")
-(dfk "M-m" "C-e")
+(dfk "M-u" "C-a")
+(dfk "M-o" "C-e")
 (dff "M-y" 'kill-buffer)
 
-(dff "M-t" 'bs-cycle-previous)
+(dff "M-n" 'ido-switch-buffer)
 
 (dff "M-s" 'save-buffer)
-(dff "M-4" 'execute-extended-command)
-(dff "M-7" 'keyboard-quit) ; doesn't work for some reason
-(dff "M-6 M-7" 'save-buffers-kill-terminal)
 
-(dff "M-o" 'ido-find-file)
+(dff "M-R" 'ido-find-file)
 (dff "M-r" 'recentf-ido-find-file)
- 
+
 (dfk "M-9" "C-x o")
-(dfk "M-1" "C-x 1") 
+(dfk "M-1" "C-x 1")
 (dfk "M-2" "C-x 2 C-x o")
 (dfk "M-3" "C-x 3 C-x o")
 (dfk "M-0" "C-x 0")
+(dff "M-4" 'execute-extended-command)
+(dff "M-6 M-7" 'save-buffers-kill-terminal)
+(dff "M-5" 'eval-buffer)
 
 (dfk "M-," "C-d")
 (dfk "M-<RET>" "C-e <RET>")
@@ -57,6 +53,7 @@
 (dff "M-f" 'isearch-forward-regexp)
 (dff "M-F" 'query-replace)
 
+(dff "M-b" 'keyboard-quit) ; doesn't work for some reason
 
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
