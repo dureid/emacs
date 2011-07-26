@@ -9,7 +9,11 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; my-keys
-(require 'my-keys)
-(my-keys-minor-mode 1)
+;;(require 'my-keys)
+;;(my-keys-minor-mode 1)
+
+;; modal-mode
+(require 'modal-mode)
+(modal-mode)
 
 
